@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 16:46:58 by diomende          #+#    #+#             */
-/*   Updated: 2025/05/13 15:45:59 by diomende         ###   ########.fr       */
+/*   Updated: 2025/05/16 13:32:29 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,34 +37,32 @@ char	*ft_line_builder(char *s)
 		line[i] = '\n';
 		i++;
 	}
+	free (s);
 	return (line[i] = '\0', line);
 }
 
-char	*ft_storage_builder(char *s)
+void	ft_storage_builder(char *buffer)
 {
 	int		line_size;
 	int		i;
-	char	*storage;
 	int		j;
 
-	if (!s)
-		return (NULL);
-	line_size = ft_newline_finder(s);
-	if (line_size == -1)
-	{
-		free (s);
-		return (NULL);
-	}
-	storage = malloc((ft_strlen(s) - line_size) * sizeof(char));
-	if (!storage)
-		return (NULL);
-	i = line_size + 1;
+	if (!buffer || !*buffer)
+		return ;
+	line_size = ft_newline_finder(buffer) + 1;
 	j = 0;
-	while (s[i] != '\0')
-		storage[j++] = s[i++];
-	storage[j] = '\0';
-	free (s);
-	return (storage);
+	if (line_size == 0)
+	{
+		while (j < BUFFER_SIZE + 1)
+			buffer[j++] = '\0';
+		return ;
+	}
+	i = line_size;
+	while (buffer[i] != '\0')
+		buffer[j++] = buffer[i++];
+	while (j < BUFFER_SIZE + 1)
+		buffer[j++] = '\0';
+	return ;
 }
 
 size_t	ft_strlen(const char *s)

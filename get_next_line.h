@@ -6,7 +6,7 @@
 /*   By: diomende <diomende@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 20:36:26 by diomende          #+#    #+#             */
-/*   Updated: 2025/05/13 15:41:50 by diomende         ###   ########.fr       */
+/*   Updated: 2025/05/15 17:14:13 by diomende         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 0
+#  define BUFFER_SIZE 10
 # endif
 
 # include <unistd.h>
@@ -30,7 +30,7 @@ char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_newline_finder(char *s);
-char	*ft_storage_builder(char *s);
+void	ft_storage_builder(char *buffer);
 char	*ft_line_builder(char *s);
 
 #endif
